@@ -1,0 +1,32 @@
+Source: ak820-linux
+Section: utils
+Priority: optional
+Maintainer: no-mine <233317302+no-mine@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               pybuild-plugin-pyproject,
+               python3-all,
+               python3-pil,
+               python3-setuptools,
+               python3-wheel,
+Standards-Version: 4.6.2
+Homepage: https://github.com/no-mine/ak820-linux
+Rules-Requires-Root: no
+
+Package: ak820-linux
+Architecture: all
+Depends: ${python3:Depends},
+         ${misc:Depends},
+         gir1.2-adw-1 (>= 1.5),
+         gir1.2-gtk-4.0 (>= 4.10),
+         python3-gi,
+         python3-pil,
+         udev,
+Description: configuration tool for the AJAZZ AK820 Pro keyboard
+ Native GNOME (GTK 4 / libadwaita) app and command line tool for the AJAZZ
+ AK820 Pro keyboard over USB cable: lighting effects, screen image/GIF upload
+ and clock sync. Includes a udev rule so the logged-in desktop user can talk
+ to the keyboard without root.
+ .
+ Unofficial; not affiliated with AJAZZ. The protocol was worked out by
+ observing the keyboard and its configuration software.

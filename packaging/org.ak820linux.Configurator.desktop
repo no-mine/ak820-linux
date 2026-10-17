@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=AK820 Pro Configurator
+GenericName=Keyboard settings
+Comment=Lighting, screen and clock for the AJAZZ AK820 Pro
+Exec=ak820 gui
+Icon=org.ak820linux.Configurator
+Terminal=false
+StartupNotify=true
+Categories=GNOME;GTK;Settings;HardwareSettings;
+Keywords=keyboard;rgb;ajazz;ak820;

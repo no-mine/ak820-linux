@@ -1,0 +1,15 @@
+# Builds the ak820-linux RPM inside a Fedora container (rootless podman is fine).
+#   make rpm
+# Pick another Fedora release with:  make rpm FEDORA=43
+ARG FEDORA=44
+FROM registry.fedoraproject.org/fedora:${FEDORA}
+
+RUN dnf -y install --setopt=install_weak_deps=False \
+        rpm-build rpmdevtools rpmlint python3-devel python3-pip pyproject-rpm-macros python3-setuptools python3-wheel \
+        python3-pillow desktop-file-utils systemd-rpm-macros tar gzip \
+    && dnf clean all
+
+WORKDIR /src
+COPY . /src
+RUN chmod +x packaging/build-in-container.sh
+CMD ["packaging/build-in-container.sh"]

@@ -1,0 +1,16 @@
+# Builds the ak820-linux .deb inside a Debian/Ubuntu container:  make deb
+# BASE must ship libadwaita >= 1.5 and setuptools >= 61: debian:13 and ubuntu:24.04 work, debian:12 / ubuntu:22.04 do not.
+ARG BASE=docker.io/library/debian:13
+FROM ${BASE}
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential fakeroot debhelper dh-python pybuild-plugin-pyproject \
+        python3-all python3-setuptools python3-wheel python3-pil desktop-file-utils lintian ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+COPY . /src
+RUN chmod +x packaging/*.sh
+CMD ["packaging/build-deb-in-container.sh"]

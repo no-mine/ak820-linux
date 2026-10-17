@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ak820-linux"
+version = "0.1.0"
+description = "Linux configuration tool for the AJAZZ AK820 Pro keyboard (lighting, screen, clock, key remap)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = ["pillow"]
+
+[project.optional-dependencies]
+gui = ["PyGObject"]      # on Fedora use the RPM: python3-gobject + libadwaita
+
+[project.scripts]
+ak820 = "ak820.cli:main"
+
+[tool.setuptools]
+packages = ["ak820"]
+
+[tool.setuptools.package-data]
+ak820 = ["data/*.json"]

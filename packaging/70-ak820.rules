@@ -1,0 +1,4 @@
+# AJAZZ AK820 Pro (Sonix 0c45): wired 8009/800a and the 2.4G dongle fdfd.
+# TAG+="uaccess" gives the user logged in at the seat (GNOME session) access to the hidraw nodes; no sudo needed.
+# Note: this includes the keyboard's own input interface, so programs you run can read keystrokes from it.
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="8009|800a|fdfd", TAG+="uaccess"

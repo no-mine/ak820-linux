@@ -1,0 +1,13 @@
+# Builds the ak820-linux Arch package inside an Arch container:  make arch
+FROM docker.io/library/archlinux:base-devel
+
+RUN pacman -Syu --noconfirm --needed \
+        python python-build python-installer python-setuptools python-wheel \
+        python-pillow python-gobject gtk4 libadwaita namcap \
+    && pacman -Scc --noconfirm \
+    && useradd -m builder
+
+WORKDIR /src
+COPY . /src
+RUN chmod +x packaging/*.sh
+CMD ["packaging/build-arch-in-container.sh"]

@@ -1,0 +1,3 @@
+packaging/70-ak820.rules usr/lib/udev/rules.d
+packaging/org.ak820linux.Configurator.desktop usr/share/applications
+packaging/org.ak820linux.Configurator.svg usr/share/icons/hicolor/scalable/apps
